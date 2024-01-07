@@ -16,7 +16,8 @@ class MethodChannelBuildInfo extends BuildInfoPlatform {
 
   @override
   Future<BuildInfoData> fromPlatform() async {
-    final map = await methodChannel.invokeMapMethod<String, dynamic>('fromPlatform');
+    final map =
+        await methodChannel.invokeMapMethod<String, dynamic>('fromPlatform');
 
     int? buildDate, installDate;
 

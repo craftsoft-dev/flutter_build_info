@@ -2,7 +2,7 @@ name: build_info_android
 description: "Android implementation of Flutter plugin that retrieves build date and time and installation date and time."
 repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info_android
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:
@@ -21,7 +21,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  build_info_platform_interface: ^1.0.0
+  build_info_platform_interface: ^1.0.2
 
 dev_dependencies:
   flutter_test:
