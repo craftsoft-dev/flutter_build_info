@@ -1,0 +1,29 @@
+name: build_info_linux
+description: "Linux implementation of the build_info plugin."
+repository: https://github.com/craftsoft-dev/flutter_build_info
+issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
+version: 1.0.1
+homepage: https://github.com/craftsoft-dev/flutter_build_info
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+flutter:
+  plugin:
+    implements: build_info
+    platforms:
+      linux:
+        pluginClass: BuildInfoLinuxPlugin
+        dartPluginClass: BuildInfoLinux
+
+dependencies:
+  flutter:
+    sdk: flutter
+  build_info_platform_interface: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+  flutter_lints: ^3.0.1

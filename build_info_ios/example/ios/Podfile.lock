@@ -1,0 +1,28 @@
+PODS:
+  - build_info_ios (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - build_info_ios (from `.symlinks/plugins/build_info_ios/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+EXTERNAL SOURCES:
+  build_info_ios:
+    :path: ".symlinks/plugins/build_info_ios/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  build_info_ios: 917d4bdc9e52aa1f23e60627074a5e8f19febb47
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+
+PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+
+COCOAPODS: 1.14.3

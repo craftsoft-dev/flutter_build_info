@@ -1,0 +1,32 @@
+name: build_info_web
+description: "Web implementation of the build_info plugin."
+repository: https://github.com/craftsoft-dev/flutter_build_info
+issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
+version: 1.0.0
+homepage: https://github.com/craftsoft-dev/flutter_build_info
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+flutter:
+  plugin:
+    implements: build_info
+    platforms:
+      web:
+        pluginClass: BuildInfoWeb
+        fileName: build_info_web.dart
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  build_info_platform_interface: ^1.0.0
+  http: ^1.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+  flutter_lints: ^3.0.1
