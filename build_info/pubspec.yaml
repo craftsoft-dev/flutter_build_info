@@ -1,8 +1,8 @@
 name: build_info
-description: "Flutter plugin to get build timestamp etc."
-repository: https://github.com/craftsoft-dev/flutter_build_info
+description: "Flutter plugin that retrieves build date and time and installation date and time."
+repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:
@@ -29,13 +29,13 @@ dependencies:
   flutter:
     sdk: flutter
   
-  build_info_android: ^1.0.0
-  build_info_ios: ^1.0.0
-  build_info_linux: ^1.0.1
-  build_info_macos: ^1.0.0
-  build_info_platform_interface: ^1.0.0
-  build_info_web: ^1.0.0
-  build_info_windows: ^1.0.0
+  build_info_android: ^1.0.1
+  build_info_ios: ^1.0.1
+  build_info_linux: ^1.0.2
+  build_info_macos: ^1.0.1
+  build_info_platform_interface: ^1.0.1
+  build_info_web: ^1.0.1
+  build_info_windows: ^1.0.1
 
 dev_dependencies:
   flutter_test:

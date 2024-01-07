@@ -1,8 +1,8 @@
 name: build_info_linux
-description: "Linux implementation of the build_info plugin."
-repository: https://github.com/craftsoft-dev/flutter_build_info
+description: "Linux implementation of Flutter plugin that retrieves build date and time and installation date and time."
+repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info_linux
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:

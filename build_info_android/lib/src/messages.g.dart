@@ -59,7 +59,7 @@ class _BuildInfoHostApiCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 128: 
+      case 128:
         return BuildInfoDataPigeon.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -75,11 +75,14 @@ class BuildInfoHostApi {
       : __pigeon_binaryMessenger = binaryMessenger;
   final BinaryMessenger? __pigeon_binaryMessenger;
 
-  static const MessageCodec<Object?> pigeonChannelCodec = _BuildInfoHostApiCodec();
+  static const MessageCodec<Object?> pigeonChannelCodec =
+      _BuildInfoHostApiCodec();
 
   Future<BuildInfoDataPigeon> fromPlatform() async {
-    const String __pigeon_channelName = 'dev.flutter.pigeon.build_info_android.BuildInfoHostApi.fromPlatform';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    const String __pigeon_channelName =
+        'dev.flutter.pigeon.build_info_android.BuildInfoHostApi.fromPlatform';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,

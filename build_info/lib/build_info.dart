@@ -5,7 +5,8 @@
 import 'package:build_info_platform_interface/build_info_data.dart';
 import 'package:build_info_platform_interface/build_info_platform_interface.dart';
 
-export 'package:build_info_platform_interface/build_info_data.dart' show BuildInfoData;
+export 'package:build_info_platform_interface/build_info_data.dart'
+    show BuildInfoData;
 
 /// BuildInfo class
 class BuildInfo {
@@ -13,7 +14,7 @@ class BuildInfo {
   static BuildInfoPlatform get platform => BuildInfoPlatform.instance;
 
   /// Get [BuildInfoData] from the platform.
-  static Future<BuildInfoData?> fromPlatform(){
+  static Future<BuildInfoData?> fromPlatform() {
     return platform.fromPlatform();
   }
 }

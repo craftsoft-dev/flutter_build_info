@@ -1,8 +1,8 @@
 name: build_info_ios
-description: "iOS implementation of the build_info plugin."
-repository: https://github.com/craftsoft-dev/flutter_build_info
+description: "iOS implementation of Flutter plugin that retrieves build date and time and installation date and time."
+repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info_ios
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:
