@@ -2,53 +2,43 @@
 // Use of this source code is governed by a MIT-style license that can be
 // found in the LICENSE file.
 
-import 'dart:typed_data';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:build_info_linux/src/messages.g.dart';
 import 'package:build_info_linux/build_info_linux.dart';
 import 'package:build_info_platform_interface/build_info_data.dart';
-import 'package:build_info_platform_interface/method_channel_build_info.dart';
 import 'package:build_info_platform_interface/build_info_platform_interface.dart';
 
 const kBuildDateMills = 123000;
 const kInstallDateMills = 456000;
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  const MethodChannel channel = MethodChannel('dev.craftsoft/build_info_linux');
-
-  final BuildInfoPlatform initialPlatform = BuildInfoPlatform.instance;
-
-  test('$MethodChannelBuildInfo is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelBuildInfo>());
-  });
+  late _FakeBuildInfoHostApi api;
 
   setUp(() {
-    BuildInfoLinux.registerWith();
-
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        return Int64List.fromList([kBuildDateMills, kInstallDateMills]);
-      },
-    );
+    api = _FakeBuildInfoHostApi();
   });
 
-  tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(channel, null);
+  test('registers instance', () {
+    BuildInfoLinux.registerWith();
+    expect(BuildInfoPlatform.instance, isA<BuildInfoLinux>());
   });
 
   test('fromPlatform', () async {
-    expect(
-      await BuildInfoPlatform.instance.fromPlatform(),
-      BuildInfoData.fromMillisecondsSinceEpoch(
-        buildDate: kBuildDateMills,
-        installDate: kInstallDateMills,
-        isUtc: true,
-      ),
-    );
+    final platform = BuildInfoLinux(api: api);
+    final data = await platform.fromPlatform();
+
+    expect(data, BuildInfoData.fromMillisecondsSinceEpoch(
+      buildDate: kBuildDateMills,
+      installDate: kInstallDateMills,
+      isUtc: true,
+    ));
   });
+}
+
+
+class _FakeBuildInfoHostApi extends BuildInfoHostApi {
+  @override
+  Future<BuildInfoDataPigeon> fromPlatform() async {
+    return BuildInfoDataPigeon(buildDate: kBuildDateMills, installDate: kInstallDateMills);
+  }
 }

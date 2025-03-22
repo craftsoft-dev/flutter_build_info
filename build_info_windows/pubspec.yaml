@@ -2,7 +2,7 @@ name: build_info_windows
 description: "Windows implementation of Flutter plugin that retrieves build date and time and installation date and time."
 repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info_windows
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.2
+version: 1.1.0
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:
@@ -21,11 +21,11 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  build_info_platform_interface: ^1.0.2
+  build_info_platform_interface: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pigeon: ^16.0.0
+  pigeon: ^25.1.0
   plugin_platform_interface: ^2.1.8
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0

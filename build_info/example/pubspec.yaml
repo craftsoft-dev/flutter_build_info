@@ -12,7 +12,7 @@ dependencies:
   build_info:
     path: ../
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   integration_test:
@@ -20,7 +20,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
+
+#dependency_overrides:
+#  build_info_android:
+#    path: ../../build_info_android
+#  build_info_ios:
+#    path: ../../build_info_ios
+#  build_info_linux:
+#    path: ../../build_info_linux
+#  build_info_macos:
+#    path: ../../build_info_macos
+#  build_info_windows:
+#    path: ../../build_info_windows

@@ -15,12 +15,8 @@ G_BEGIN_DECLS
 #define FLUTTER_PLUGIN_EXPORT
 #endif
 
-typedef struct _BuildInfoLinuxPlugin BuildInfoLinuxPlugin;
-typedef struct {
-  GObjectClass parent_class;
-} BuildInfoLinuxPluginClass;
-
-FLUTTER_PLUGIN_EXPORT GType build_info_linux_plugin_get_type();
+G_DECLARE_FINAL_TYPE(BuildInfoLinuxPlugin, build_info_linux_plugin, BUILD_INFO,
+    LINUX_PLUGIN, GObject)
 
 FLUTTER_PLUGIN_EXPORT void build_info_linux_plugin_register_with_registrar(
     FlPluginRegistrar* registrar);

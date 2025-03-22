@@ -2,7 +2,7 @@ name: build_info_platform_interface
 description: "Common platform interface for the build_info plugin to retrieves build date and time and installation date and time."
 repository: https://github.com/craftsoft-dev/flutter_build_info/tree/main/build_info_platform_interface
 issue_tracker: https://github.com/craftsoft-dev/flutter_build_info/issues
-version: 1.0.2
+version: 1.1.0
 homepage: https://github.com/craftsoft-dev/flutter_build_info
 
 environment:
@@ -17,4 +17,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0

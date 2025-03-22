@@ -6,6 +6,7 @@ import 'package:build_info_android/build_info_android.dart';
 import 'package:build_info_android/src/messages.g.dart';
 import 'package:build_info_platform_interface/build_info_data.dart';
 import 'package:build_info_platform_interface/build_info_platform_interface.dart';
+import 'package:flutter/src/services/binary_messenger.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const kBuildDateMills = 123000;
@@ -36,7 +37,7 @@ void main() {
 }
 
 
-class _FakeBuildInfoHostApi implements BuildInfoHostApi {
+class _FakeBuildInfoHostApi extends BuildInfoHostApi {
   @override
   Future<BuildInfoDataPigeon> fromPlatform() async {
     return BuildInfoDataPigeon(buildDate: kBuildDateMills, installDate: kInstallDateMills);

@@ -5,10 +5,12 @@
 #include <flutter_linux/flutter_linux.h>
 
 #include "include/build_info_linux/build_info_linux_plugin.h"
+#include "messages.g.h"
 
 // This file exposes some plugin internals for unit testing. See
 // https://github.com/flutter/flutter/issues/88724 for current limitations
 // in the unit-testable API.
 
 // Handles the fromPlatform method call.
-FlMethodResponse *from_platform();
+// FlMethodResponse *from_platform();
+BuildInfoLinuxBuildInfoHostApiFromPlatformResponse* handle_from_platform(gpointer user_data);

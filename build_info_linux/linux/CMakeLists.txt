@@ -14,6 +14,8 @@ set(PLUGIN_NAME "build_info_linux_plugin")
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
   "build_info_linux_plugin.cc"
+  "messages.g.cc"
+  "messages.g.h"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
@@ -100,6 +102,9 @@ target_include_directories(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(${TEST_RUNNER} PRIVATE flutter)
 target_link_libraries(${TEST_RUNNER} PRIVATE PkgConfig::GTK)
 target_link_libraries(${TEST_RUNNER} PRIVATE gtest_main gmock)
+
+# Add BUILD_INFO_TIMESTAMP define.
+target_compile_definitions(${TEST_RUNNER} PRIVATE BUILD_INFO_TIMESTAMP=${BUILD_INFO_TIMESTAMP_MS})
 
 # Enable automatic test discovery.
 include(GoogleTest)

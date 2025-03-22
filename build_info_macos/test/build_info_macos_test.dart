@@ -36,7 +36,7 @@ void main() {
 }
 
 
-class _FakeBuildInfoHostApi implements BuildInfoHostApi {
+class _FakeBuildInfoHostApi extends BuildInfoHostApi {
   @override
   Future<BuildInfoDataPigeon> fromPlatform() async {
     return BuildInfoDataPigeon(buildDate: kBuildDateMills, installDate: kInstallDateMills);

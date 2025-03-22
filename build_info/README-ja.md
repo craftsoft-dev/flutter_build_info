@@ -8,7 +8,7 @@ Flutter アプリのビルドした日時とインストールした日時を取
 
 ```yaml
 dependencies:
-  build_info: ^1.0.0
+  build_info: ^1.1.0
 ```
 
 ## 使い方

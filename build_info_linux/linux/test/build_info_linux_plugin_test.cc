@@ -9,6 +9,29 @@
 #include "include/build_info_linux/build_info_linux_plugin.h"
 #include "build_info_linux_plugin_private.h"
 
+// Re-declare the opaque struct as a temporary workaround for the lack of
+// APIs for reading host API response objects.
+// TODO(stuartmorgan): Remove this once the following is fixed:
+// https://github.com/flutter/flutter/issues/152166.
+struct _BuildInfoLinuxBuildInfoHostApiFromPlatformResponse {
+  GObject parent_instance;
+
+  FlValue* value;
+};
+
+struct _BuildInfoLinuxBuildInfoDataPigeon {
+  GObject parent_instance;
+
+  int64_t* build_date;
+  int64_t* install_date;
+};
+
+// TODO(stuartmorgan): Remove this once
+// https://github.com/flutter/flutter/issues/156100 is fixed. For now, this may
+// need to be updated to make unit tests pass again any time the
+// Pigeon-generated files are updated.
+static const int platform_type_group_object_id = 129;
+
 // This demonstrates a simple unit test of the C portion of this plugin's
 // implementation.
 //
@@ -20,23 +43,24 @@
 namespace build_info_linux {
 namespace test {
 TEST(BuildInfoLinuxPlugin, FromPlatform) {
-  g_autoptr(FlMethodResponse) response = from_platform();
+  g_autoptr(BuildInfoLinuxBuildInfoHostApiFromPlatformResponse) response = handle_from_platform(nullptr);
+
   ASSERT_NE(response, nullptr);
-  ASSERT_TRUE(FL_IS_METHOD_SUCCESS_RESPONSE(response));
-  FlValue* result = fl_method_success_response_get_result(
-      FL_METHOD_SUCCESS_RESPONSE(response));
+  ASSERT_TRUE(fl_value_get_type(response->value) == FL_VALUE_TYPE_LIST);
+  ASSERT_TRUE(fl_value_get_length(response->value) == 1);
 
-  ASSERT_EQ(FL_VALUE_TYPE_INT64_LIST, fl_value_get_type(result));
+  FlValue* result = fl_value_get_list_value(response->value, 0);
+  ASSERT_EQ(FL_VALUE_TYPE_CUSTOM, fl_value_get_type(result));
 
-  ASSERT_EQ(2, fl_value_get_length(result));
-  const int64_t* val = fl_value_get_int64_list(result);
-
+  ASSERT_EQ(platform_type_group_object_id, fl_value_get_custom_type(result));
+  _BuildInfoLinuxBuildInfoDataPigeon* obj = reinterpret_cast<_BuildInfoLinuxBuildInfoDataPigeon*>(fl_value_get_custom_value_object(result));
 #ifdef BUILD_INFO_TIMESTAMP
-  ASSERT_EQ(BUILD_INFO_TIMESTAMP, val[0]);
+  ASSERT_NE(nullptr, obj->build_date);
+  ASSERT_EQ(BUILD_INFO_TIMESTAMP, *(obj->build_date));
 #else
-  ASSERT_EQ(-1L, val[0]);
+  ASSERT_EQ(nullptr, obj->build_date);
 #endif
-  ASSERT_EQ(-1L, val[1]);
+  ASSERT_EQ(nullptr, obj->install_date);
 }
 }  // namespace test
 }  // namespace build_info_linux

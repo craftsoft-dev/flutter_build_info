@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Changed to use Pigeon.
+- Updated relevant library versions.
+
 ## 1.0.2
 
 - Changed the version of build_info_platform_interface to 1.0.2.

@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Updated relevant library versions.
+
 ## 1.0.2
 
 - Changed version of plugin_platform_interface to 2.1.8.

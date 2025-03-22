@@ -2,15 +2,21 @@
 // Use of this source code is governed by a MIT-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:build_info_platform_interface/build_info_data.dart';
 import 'package:build_info_platform_interface/build_info_platform_interface.dart';
+import 'package:flutter/foundation.dart' show visibleForTesting;
 
-const MethodChannel _channel = MethodChannel('dev.craftsoft/build_info_linux');
+import 'src/messages.g.dart';
 
 /// An implementation of [BuildInfoPlatform] for Linux.
 class BuildInfoLinux extends BuildInfoPlatform {
+  final BuildInfoHostApi _hostApi;
+
+  /// Creates a new plugin implementation instance.
+  BuildInfoLinux({
+    @visibleForTesting BuildInfoHostApi? api,
+  }) : _hostApi = api ?? BuildInfoHostApi();
+
   /// Registers this class as the default instance of [BuildInfoPlatform].
   static void registerWith() {
     BuildInfoPlatform.instance = BuildInfoLinux();
@@ -18,15 +24,11 @@ class BuildInfoLinux extends BuildInfoPlatform {
 
   @override
   Future<BuildInfoData> fromPlatform() async {
-    final data = await _channel.invokeMethod<Int64List>('fromPlatform');
-
-    final dataLen = data?.length ?? 0;
-    final buildDateInt = dataLen >= 1 ? data?.elementAt(0) : null;
-    final installDateInt = dataLen >= 2 ? data?.elementAt(1) : null;
+    final data = await _hostApi.fromPlatform();
 
     return BuildInfoData.fromMillisecondsSinceEpoch(
-      buildDate: buildDateInt != -1 ? buildDateInt : null,
-      installDate: installDateInt != -1 ? installDateInt : null,
+      buildDate: data.buildDate != -1 ? data.buildDate : null,
+      installDate: data.installDate != -1 ? data.installDate : null,
       isUtc: true,
     );
   }

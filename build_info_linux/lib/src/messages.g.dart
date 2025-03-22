@@ -107,7 +107,7 @@ class BuildInfoHostApi {
   final String pigeonVar_messageChannelSuffix;
 
   Future<BuildInfoDataPigeon> fromPlatform() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.build_info_android.BuildInfoHostApi.fromPlatform$pigeonVar_messageChannelSuffix';
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.build_info_linux.BuildInfoHostApi.fromPlatform$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
